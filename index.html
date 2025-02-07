@@ -16,15 +16,33 @@
         }
         .floating-music-controls button {
             padding: 10px 15px;
-            background-color: #5cb85c; /* Green, adjust as needed */
-            color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px; /* Make the emoji and text larger */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px; /* Space between emoji and text */
+            transition: background-color 0.3s ease; /* Smooth transition */
         }
 
-        .floating-music-controls button:hover {
-            background-color: #4cae4c;
+        #startMusic {
+            background-color: #28a745; /* Green for start */
+            color: white;
+        }
+
+        #startMusic:hover {
+            background-color: #218838;
+        }
+
+        #stopMusic {
+            background-color: #dc3545; /* Red for stop */
+            color: white;
+        }
+
+        #stopMusic:hover {
+            background-color: #c82333;
         }
     </style>
 </head>
@@ -36,8 +54,8 @@
     </div>
 
     <div class="floating-music-controls">
-        <button id="startMusic">Start Background Music</button>
-        <button id="stopMusic">Stop Background Music</button>
+        <button id="startMusic">🎵 Start Music</button>
+        <button id="stopMusic">🛑 Stop Music</button>
     </div>
 
     <div class="container">
