@@ -7,19 +7,19 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="video-container">
-        <video autoplay loop muted playsinline>
-            <source src="https://github.com/user-attachments/assets/abdcfe59-3e01-473a-8b4c-3ed5200b7564" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-    <div class="container">
-           <!-- Title Image -->
-           <div class="image-row" style="background-color: #ff6b6b;">
-            <img src="https://github.com/user-attachments/assets/8be48452-ea09-46c7-86ff-76a4d3906a45" alt="Robot with Headphones">
-            <p>In solitude, the robot finds solace in music, dreaming of connections yet to be made.</p>
-        </div>
 
+    <div class="intro-container">
+        <h1>Welcome to SMN Aizaz's Project</h1>
+        <p>Explore the emotional journey of a robot learning about connection, courage, and love.</p>
+        <button id="startMusic">Start Background Music</button>
+    </div>
+
+    <audio id="backgroundMusic" loop>
+        <source src="Circuit_of_Sorrow.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container" style="display: none;"> <!-- Initially hide the main content -->
         <!-- Robot and Dog -->
         <div class="image-row" style="background-color: #4ecdc4;">
             <img src="https://github.com/user-attachments/assets/3e5b0bea-a4ec-41c7-a3e8-9c7952c63823" alt="Robot Petting Dog">
@@ -52,18 +52,6 @@
             <p>In the quiet act of feeding, the robot finds purpose, healing its own heart through care for another.</p>
         </div>
 
-        <!-- Robot Playing Tennis -->
-        <div class="image-row" style="background-color: #d980fa;">
-            <img src="https://github.com/user-attachments/assets/1c291ad5-4b70-4678-a7f8-4d58daa72042" alt="Robot Playing Tennis">
-            <p>With each swing, the robot fights back the shadows of loneliness, embracing the thrill of the game.</p>
-        </div>
-
-        <!-- Robot Walking to Class -->
-        <div class="image-row" style="background-color: #a2d2ff;">
-            <img src="https://github.com/user-attachments/assets/f5c6a52a-00c7-4e43-9673-2bec77d86cab" alt="Robot Walking to Class">
-            <p>Every step to class is a step towards overcoming fear, blending in with the crowd yet standing out with bravery.</p>
-        </div>
-
         <!-- Girl Robot with Friends -->
         <div class="image-row" style="background-color: #f8a5c2;">
             <img src="https://github.com/user-attachments/assets/492a44b0-0926-4de1-a64c-f658f7c47efb" alt="Girl Robot with Friends">
@@ -84,18 +72,6 @@
             </audio>
         </div>
 
-        <!-- Girl Robot Crying in Chair -->
-        <div class="image-row" style="background-color: #2c3e50;">
-            <img src="https://github.com/user-attachments/assets/59f96706-370e-47ef-b49e-65322bc1524c" alt="Girl Robot Crying in Chair">
-            <p>The chair cradles her sorrow, but in this moment of vulnerability, there's a silent promise of healing.</p>
-        </div>
-
-        <!-- Girl Robot and Boy Robot -->
-        <div class="image-row" style="background-color: #ff7f50;">
-            <img src="https://github.com/user-attachments/assets/a4288bf5-d8ca-4c47-978b-07515df46d96" alt="Girl Robot and Boy Robot">
-            <p>In each other's company, they find a shared strength, turning loneliness into a journey of mutual support.</p>
-        </div>
-
         <!-- Girl Robot and Boy Robot Dancing -->
         <div class="image-row" style="background-color: #8a2be2;">
             <img src="https://github.com/user-attachments/assets/64f2b42f-82f0-4d74-bb67-8dca265bff80" alt="Girl Robot and Boy Robot Dancing">
@@ -105,12 +81,19 @@
                 Your browser does not support the audio element.
             </audio>
         </div>
-
-        <!-- Girl Robot and Boy Robot Holding Hands -->
-        <div class="image-row" style="background-color: #48d1cc;">
-            <img src="https://github.com/user-attachments/assets/c7db7410-d763-441c-a6e8-5da0aa36fb2c" alt="Girl Robot and Boy Robot Holding Hands">
-            <p>Hand in hand, they stand against the world's harshness, their grip a symbol of unwavering support and love.</p>
-        </div>
     </div>
+
+    <script>
+        const startMusicButton = document.getElementById('startMusic');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const introContainer = document.querySelector('.intro-container');
+        const mainContainer = document.querySelector('.container');
+
+        startMusicButton.addEventListener('click', () => {
+            backgroundMusic.play();
+            introContainer.style.display = 'none'; // Hide the intro
+            mainContainer.style.display = 'block';   // Show the main content
+        });
+    </script>
 </body>
 </html>
