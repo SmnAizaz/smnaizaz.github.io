@@ -1,1 +1,226 @@
-<h1>Hellow world</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Trail Running Experience</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .page {
+            display: none;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        #entryPage {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .entry-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 600px;
+        }
+
+        .main-container {
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            height: 100%;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 10px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #45a049;
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .audio-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        #loadingMessage {
+            margin-top: 20px;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Entry Page -->
+    <div id="entryPage" class="page">
+        <div class="entry-container">
+            <h1>Discover the Forest Trail</h1>
+            <p>Press play to immerse yourself in a running adventure through nature</p>
+
+            <button class="cta-button" onclick="startJourney()">Begin Your Journey</button>
+
+            <p id="loadingMessage">Loading your forest experience...</p>
+        </div>
+    </div>
+
+    <!-- Main Page -->
+    <div id="mainPage" class="page">
+        <div class="main-container">
+            <header>
+                <h1>Embrace the Forest Trail</h1>
+            </header>
+
+            <div class="content">
+                <h2>Experience Nature's Running Sanctuary</h2>
+                <p>Discover the exhilaration of running through lush forest paths. Feel the crisp air, hear the rustling
+                    leaves, and connect with nature with every stride.</p>
+
+                <p>Forest running offers more than just exercise - it's a journey of mind and body. Soft trails cushion
+                    your steps, while towering trees provide a natural canopy of tranquility.</p>
+
+                <div class="audio-controls">
+                    <button class="cta-button" onclick="toggleBackgroundMusic()">Toggle Background Music</button>
+                    <button class="cta-button" onclick="playClickSound()">Click Sound</button>
+                    <button class="cta-button" onclick="returnToEntry()">Return to Entry</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.freesound.org/previews/745/745372_15232790-lq.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <audio id="clickSound">
+        <source src="https://cdn.freesound.org/previews/619/619541_11563061-lq.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Page management
+        function showPage(pageId) {
+            // Hide all pages
+            document.getElementById('entryPage').style.display = 'none';
+            document.getElementById('mainPage').style.display = 'none';
+
+            // Show selected page
+            document.getElementById(pageId).style.display = 'flex';
+        }
+
+        // Initial page load
+        showPage('entryPage');
+
+        // Audio elements
+        const bgMusic = document.getElementById('bgMusic');
+        const clickSound = document.getElementById('clickSound');
+
+        // Start journey function
+        function startJourney() {
+            const loadingMessage = document.getElementById('loadingMessage');
+
+            // Try to play the background music
+            bgMusic.play()
+                .then(() => {
+                    // Music started successfully
+                    loadingMessage.textContent = "Journey beginning...";
+                    loadingMessage.style.display = 'block';
+
+                    // Switch to main page after a short delay
+                    setTimeout(() => {
+                        showPage('mainPage');
+                    }, 1500);
+                })
+                .catch((error) => {
+                    // Handle autoplay restrictions
+                    alert('Please interact with the page to start your journey. Click the button again.');
+                    console.error("Music play failed:", error);
+                });
+        }
+
+        // Toggle background music
+        function toggleBackgroundMusic() {
+            if (bgMusic.paused) {
+                bgMusic.play();
+            } else {
+                bgMusic.pause();
+            }
+        }
+
+        // Play click sound
+        function playClickSound() {
+            clickSound.currentTime = 0;
+            clickSound.play();
+        }
+
+        // Return to entry page
+        function returnToEntry() {
+            // Stop background music
+            bgMusic.pause();
+            bgMusic.currentTime = 0;
+
+            // Show entry page
+            showPage('entryPage');
+        }
+    </script>
+</body>
+
+</html>
+
+<!-- smnaizaz -->
