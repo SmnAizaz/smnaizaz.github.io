@@ -6,44 +6,8 @@
     <title>Emotional Journey of a Robot</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .floating-music-controls {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-            z-index: 1000; /* Ensure it's above other content */
-        }
-        .floating-music-controls button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px; /* Make the emoji and text larger */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px; /* Space between emoji and text */
-            transition: background-color 0.3s ease; /* Smooth transition */
-        }
-
-        #startMusic {
-            background-color: #28a745; /* Green for start */
-            color: white;
-        }
-
-        #startMusic:hover {
-            background-color: #218838;
-        }
-
-        #stopMusic {
-            background-color: #dc3545; /* Red for stop */
-            color: white;
-        }
-
-        #stopMusic:hover {
-            background-color: #c82333;
-        }
+        /* General Styling */
+   
     </style>
 </head>
 <body>
@@ -73,6 +37,10 @@
                 <source src="Dramatic_buildup_of_.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
+            <audio controls>
+                <source src="happy_dog_barking.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
         </div>
 
         <!-- Robot Typing -->
@@ -95,6 +63,10 @@
         <div class="image-row" style="background-color: #5b2c6f;">
             <img src="https://github.com/user-attachments/assets/037fcaa6-22cd-4340-84e6-106457c0f412" alt="Robot Feeding Cat">
             <p>In the quiet act of feeding, the robot finds purpose, healing its own heart through care for another.</p>
+              <audio controls>
+                <source src="a_cat_meowing_loudly.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
         </div>
 
         <!-- Robot Playing Tennis -->
